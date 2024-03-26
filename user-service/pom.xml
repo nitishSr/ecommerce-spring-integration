@@ -48,6 +48,10 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
 	</dependencies>
 
 	<!-- <build>
@@ -71,9 +75,10 @@
     <outputDirectory>${project.build.outputDirectory}</outputDirectory>
     <resources>
         <resource>
-            <directory>${project.basedir}/src/resources/</directory>
+            <directory>${project.basedir}/src/main/resources/</directory>
             <filtering>false</filtering>
             <include>application.properties</include>
+            <include>templates/</include>
         </resource>
     </resources>
 </configuration>
