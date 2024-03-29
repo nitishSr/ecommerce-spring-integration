@@ -13,8 +13,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.vmware.orderservice.model.OnlineOrder;
 import com.vmware.orderservice.repository.OrderRepository;
 import com.vmware.orderservice.service.OrderService;
+//import com.vmware.orderservice.integration.OrderIntegrationChannels;
+import org.springframework.messaging.Message;
+import org.springframework.messaging.MessageChannel;
+import org.springframework.messaging.support.MessageBuilder;
 
-/*
+/* for using REST API calls
 @RestController
 @RequestMapping("/orders")
 public class OrderController {
@@ -33,6 +37,7 @@ public class OrderController {
 }
 */
 
+/* for using HTML template call */
 @Controller
 @RequestMapping("/orders")
 public class OrderController {
@@ -45,3 +50,46 @@ public class OrderController {
         return "onlineorders"; // Thymeleaf HTML template name without extension
     }
 }
+
+
+/*@RestController
+public class OrderController {
+
+    @Autowired
+    private OrderIntegrationChannels channels;
+
+    @PostMapping("/place-order")
+    public String placeOrder(@RequestBody OnlineOrder order) {
+        // Create a message with the order payload
+        Message<OnlineOrder> message = MessageBuilder.withPayload(order).build();
+        
+        // Send the message to the order request channel
+        MessageChannel requestChannel = channels.orderRequestChannel();
+        boolean orderPlaced = requestChannel.send(message);
+
+        return orderPlaced ? "Order placed successfully!" : "Failed to place order!";
+    }
+}
+*/
+
+/*
+@RestController
+@RequestMapping("/orders")
+public class OrderController {
+
+    @Autowired
+    private OrderService orderService;
+    
+    @GetMapping("/")
+    public List<OnlineOrder> getAllOrders() {
+        return orderService.getAllOrders();
+    }
+    
+    @PostMapping("/order")
+    public String placeOrder(@RequestBody OnlineOrder order) {
+        orderService.processOrder(order);
+        return "Order placed successfully!";
+    }
+}
+*/
+

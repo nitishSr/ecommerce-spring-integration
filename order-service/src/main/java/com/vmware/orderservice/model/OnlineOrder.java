@@ -63,4 +63,14 @@ public class OnlineOrder {
     			", quantity= "+quantity+
     			"}";
     }
+    
+    public OnlineOrder() {
+    	
+    }
+    
+    public OnlineOrder(Long userId, Long productId, int quantity) {
+    	this.userId = userId;
+    	this.productId = productId;
+    	this.quantity = quantity;
+    }
 }
