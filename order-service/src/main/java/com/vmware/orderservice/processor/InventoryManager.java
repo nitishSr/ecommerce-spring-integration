@@ -1,14 +1,15 @@
 package com.vmware.orderservice.processor;
 
-import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
+import org.springframework.integration.annotation.ServiceActivator;
+
 
 @Component
 public class InventoryManager {
 	
 	private Long processingDelay = 4000L;
 
-    @RabbitListener(queues = OrderProcessingConfig.INVENTORY_QUEUE)
+	@ServiceActivator(inputChannel="inventoryProcessor")
     public void manageInventory(String orderId) {
         // Manage inventory logic for the order
     	try {
@@ -19,6 +20,5 @@ public class InventoryManager {
 		} catch (InterruptedException e) {
 			Thread.currentThread().interrupt();
 		}
-        // System.out.println("Inventory managed for order: " + orderId);
     }
 }

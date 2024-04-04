@@ -1,18 +1,16 @@
 package com.vmware.orderservice.processor;
 
-import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
+import org.springframework.integration.annotation.ServiceActivator;
 
 @Component
 public class ShippingHandler {
 	
 	private Long shippingDelay = 7000L;
 
-    @RabbitListener(queues = OrderProcessingConfig.SHIPPING_QUEUE)
+	@ServiceActivator(inputChannel="shippingProcessor")
     public void handleShipping(String orderId) {
-        // Handle shipping logic for the order
-        // System.out.println("Order shipped: " + orderId);
-    	
+        // Handle shipping logic for the order	
     	try {
 			Thread.sleep(this.shippingDelay);
 			System.out.println(Thread.currentThread().getName()

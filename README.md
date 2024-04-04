@@ -1,8 +1,8 @@
-# Spring boot e-commerce micro-services with spring integration AMQP
+# Spring boot e-commerce micro-services with spring integration using message and queue channels (without external RabbitMQ server)
 
-This code sample is build on top of the repository sample spring boot ecommerce micro-services.
-It demonstrates the use of Spring Integration AMQP feature to setup message based order processing system for the order-service.
-It uses RabbitMQ as message broker and RabbitMQ template feature to build messages, queues and communication.
+This code sample is build on top of the repository sample spring boot ecommerce-spring-amqp.
+It demonstrates the use of Spring Integration messaging and channel feature to setup message based order processing system for the order-service.
+It uses in-memory messaging system and is not dependend on any external broker like RabbitMQ or Apache Kafka.
 
 
 ## Setup locally
@@ -29,10 +29,5 @@ It uses RabbitMQ as message broker and RabbitMQ template feature to build messag
 
 * Move to order-service folder
 * Ensure the order-service is already running
-* Install RabbitMQ locally (on MAC you can run brew install rabbitmq)
-* Start up the RabbitMQ service in another terminal (on MAC use brew service start rabbitmq)
-* Note the port where rabbitmq is running (typically 5672)
-* If you gave some other credentials during install, use them, otherwise use default guest/guest
-* Update the values in application.properties file if required
 * To run test, simply run command - `mvn test`
 * You can switch to order-service terminal and see the order processing in action (console output)
