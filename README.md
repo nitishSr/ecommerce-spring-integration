@@ -2,7 +2,7 @@
 
 This code sample is build on top of the repository sample spring boot ecommerce-spring-amqp.
 It demonstrates the use of Spring Integration messaging and channel feature to setup message based order processing system for the order-service.
-It uses in-memory messaging system and is not dependend on any external broker like RabbitMQ or Apache Kafka.
+It uses in-memory messaging system and is not dependend on any external broker like RabbitMQ.
 
 
 ## Setup locally
